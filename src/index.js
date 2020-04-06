@@ -1,29 +1,30 @@
+const path = require('path')
 const express = require('express')
 const app = express()
+const hbs = require('hbs')
 const port = process.env.PORT || 3000
 require('./db/mongoose')
 const User = require('./models/user')
 const Poll = require('./models/poll')
 
+const userRouter = require('./routers/user')
+const pollRouter = require('./routers/poll')
+app.use(userRouter)
+app.use(pollRouter)
+
 app.use(express.json())
 
-app.post('/users', (req, res) => {
-  const user = new User(req.body)
-  user.save().then((poll) => {
-    res.send(user)
-  }).catch((e) => {
-    res.status(400).send(e)
-  })
-})
+const viewsPath = path.join(__dirname, './templates/views')
+const partialsPath = path.join(__dirname, './templates/partials')
 
-app.post('/polls', (req, res) => {
-  const poll = new Poll(req.body)
-  poll.save().then((poll) => {
-    res.send(poll)
-  }).catch((e) => {
-    res.status(400).send(e)
-  })
-})
+// Setup handlebars engine and views location
+app.set('view engine', 'hbs')
+app.set('views', viewsPath)
+hbs.registerPartials(partialsPath)
+
+//Routes
+const router = new express.Router()
+app.use(router)
 
 app.listen(port, () => {
     console.log('Server is up on port ' + port)
