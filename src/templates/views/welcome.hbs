@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Muli:wght@200;300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/css/styles.css" >
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <meta name="google-signin-client_id" content="{{googleClientId}}">
+    <title>Welcome to Decidio!</title>
+  </head>
+
+  <body>
+    <div class='row' id='header'>
+      {{>header}}
+    </div>
+    <div class='row pt-5'>
+      <h2 id='tag-line'>Overthinking. Cancelled.</h2>
+    </div>
+    <div class='row p-3 pt-5'>
+      {{>sessionForm}}
+    </div>
+  </body>
+</html>

@@ -3,16 +3,16 @@ const validator = require('validator')
 
 const Poll = mongoose.model('Poll', {
   name: {
-    type: string,
+    type: String,
     required: true,
     trim: true
   },
   completed: {
-    type: boolean,
+    type: Boolean,
     default: false,
   },
   description: {
-    type: string,
+    type: String,
     default: ''
   }
 })
